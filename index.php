@@ -258,10 +258,10 @@ $app_name = idx($app_info, 'name', '');
 
 
     <!-- Three-up Content Blocks -->
-
+  <?php if (isset($basic)) { ?>
   <div class="container"> 
     <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
-        <div align="center">
+        
           <ul class="friends">
             <?php
               foreach ($friends as $friend) {
@@ -279,7 +279,7 @@ $app_name = idx($app_info, 'name', '');
               }
             ?>
           </ul>
-         </div> 
+         
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -316,6 +316,7 @@ $app_name = idx($app_info, 'name', '');
   </script>
   <!-- End Footer -->
 
+  <?php }?>
 
 
 
