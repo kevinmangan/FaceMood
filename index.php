@@ -83,17 +83,18 @@ $app_name = idx($app_info, 'name', '');
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
 
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/normalize.css">
 
     <script src="js/vendor/custom.modernizr.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
 
     <title><?php echo he($app_name); ?></title>
-     <!-- <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+      <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
--->
+
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
     <![endif]-->
@@ -258,7 +259,7 @@ $app_name = idx($app_info, 'name', '');
 
 
     <!-- Three-up Content Blocks -->
-  <?php if (isset($basic)) { ?>
+<!--   <?php if (isset($basic)) { ?>
   <div class="container"> 
     <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
         
@@ -297,7 +298,7 @@ $app_name = idx($app_info, 'name', '');
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-  </div>
+  </div> -->
     
 
 
@@ -330,7 +331,7 @@ $app_name = idx($app_info, 'name', '');
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ORIGINAL FACEBOOK SPLASH PAGE
+  ORIGINAL FACEBOOK SPLASH PAGE
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -464,7 +465,7 @@ $app_name = idx($app_info, 'name', '');
         </li>
       </ul>
     </section>
-    -->
+   
 
   </body>
 </html>
