@@ -54,45 +54,17 @@ if ($user_id) {
     }
   }
 
-/*if(file_exists('./tmp/last_post.data')) {
-  $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
-} else {
-  file_put_contents('./tmp/last_post.data', serialize(value));
-}
-
-
-if(file_exists('./tmp/fb_home.data')) {
-  $home = unserialize(file_get_contents('./tmp/fb_home.data'));
-  if(file_exists('./tmp/last_post.data')) {
-    $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
-    if(idx($home[0],'id') != $last_post) {
-      $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-      file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
-    }
-  } else {
-    $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-    file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
-  }
-}
-
-if (!$home) { // cache doesn't exist or is older than 10 mins
-  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-  file_put_contents('./tmp/fb_home.data', serialize($home));
-}*/
-
-      $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-
-      //echo $home[0];
-
   
+
+  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
-/*  $app_using_friends = $facebook->api(array(
+  $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
-}*/
+}
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
@@ -112,10 +84,6 @@ function assignFriend($status){
 
   return $sentiment;
 }
-
-//function comment($id, $comment){
-//    $facebook->api('/' . $id . '/comments/', 'post', array('message' => $comment));
-//}
 
 /* gets the data from a URL */
 function get_data($url) {
@@ -226,7 +194,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-            <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <h1>FaceMood</h1>
            </li>
         </ul>
 
@@ -245,9 +213,8 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          #frontpage {
-            display: block;
-            margin: 0 auto;
+          div.frontpage {
+            text-align: center;
           }
           </style>
           <h1>Welcome to</h1>
@@ -353,40 +320,30 @@ function get_data($url) {
     foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
-                if(strlen($message) > 6) {        //filter out short messages
-                   $from = idx($status, 'from');
-                   if(idx($from, 'category') == null) { //filter out Facebook Pages
-                      $id = idx($from, 'id');
-                      $name = idx($from, 'name');
+        if(strlen($message) > 6) {        //filter out short messages
+          $from = idx($status, 'from');
+          if(idx($from, 'category') == null) { //filter out Facebook Pages
+            $id = idx($from, 'id');
+            $name = idx($from, 'name');
             
-                      //if(idx($status, 'link') == null){
-                         // $post_id = idx($status, 'id');
-                        //  $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
-                          $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
-
-                      //}else{
-                          //$post_id = idx($status, 'id');
-                         // $url = idx($status, 'link');
-                        //  $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a></div>';
-                         // $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
-
-                     // }
-                      $datResult = assignFriend($message);
-                      
-                      if($datResult == "positive" ){  ?>
-                        <script>
-                          $('#positive .friends').append('<?php echo $returnHTML; ?>');
-                        </script>
-                       <?php } elseif($datResult == "neutral"){ ?>
-                        <script>
-                          $('#neutral .friends').append('<?php echo $returnHTML; ?>');
-                        </script>
-                      <?php } elseif($datResult == "negative"){ ?>
-                        <script>
-                          $('#negative .friends').append('<?php echo $returnHTML; ?>');
-                        </script>
-                      <?php } 
-                  }
+            $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
+            
+            $datResult = assignFriend($message);
+            
+            if($datResult == "positive" ){  ?>
+              <script>
+                $('#positive .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+             <?php } elseif($datResult == "neutral"){ ?>
+              <script>
+                $('#neutral .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+            <?php } elseif($datResult == "negative"){ ?>
+              <script>
+                $('#negative .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+            <?php } 
+            }
         }
   }
         ?>
