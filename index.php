@@ -217,26 +217,7 @@ function get_data($url) {
 	  
     </script>
 
-    <script>
-    $( document ).ready(function() {
-      
-        $("#positiveRefresh").button();
-
-        $('#positiveRefresh').click(function() {
-            //FB.api('/me/home?limit=10', function(response) {
-            //  jQuery.each(response.post, function(){
-            //      //if($('#post' + this.id).val() != null){
-            //          $('#positive .friends').prepend("<div class=\"panel\"><a href=\"https:www.facebook.com/" + this.from.id + "target="_top"><img src=\"https://graph.facebook.com/" + this.from.id + "/picture?type=square\" alt=\""  + this.from.name . "\">" +  this.from.name + "</a><br><br>" +  this.message + "<hr> <div class=\"row collapse\"> <input id=\"" + this.id + "\" type=\"text\" placeholder=\"Comment on their mood...\">  <a href=\"#\"  class=\"button prefix\">Post</a></div> </div>");
-                  //}
-            //  });
-            //});
-        
-            $('#positive .friends').append("<div class=\"panel\">TESTTTTTTT</div>");
-
-        });
-
-    });
-    </script>
+    
 
     
       <?php if (isset($basic)) { ?>
@@ -350,9 +331,7 @@ function get_data($url) {
   <div id="container2">   
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
-          <br>
-          <a id="negativeRefresh" class="button">Refresh</a>
-          <br>
+        
           <div class="friends">
            
           </div>
@@ -360,18 +339,14 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
-          <br>
-          <a id="neutralRefresh" class="button">Refresh</a>
-          <br>
+          
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
-            <br>
-            <a id="positiveRefresh" class="button">Refresh</a>
-            <br>
+          
             <div class="friends">
       
             </div>
