@@ -245,7 +245,7 @@ function get_data($url) {
       
       <?php } else { ?>
       <div style="background-color:#391256;">
-      <div> 
+      <div style="background-color:#391256;"> 
       <nav class="top-bar">
         <ul class="title-area">
            <!-- Title Area -->
@@ -255,7 +255,7 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
-      <div>
+      <div style="background-color:#391256;">
       <header id="welcome">
         <div align="center">
           
@@ -263,7 +263,7 @@ function get_data($url) {
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
-      <div>
+      </div>
       </div>
       <?php } ?>
       
