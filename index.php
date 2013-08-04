@@ -348,21 +348,21 @@ function get_data($url) {
 	right:33.33%;
 	background:#fff689; /* column 1 background colour */
 }
-#col1 {
+#negative {
 	float:left;
 	width:29.33%;
 	position:relative;
 	left:68.67%;
 	overflow:hidden;
 }
-#col2 {
+#neutral {
 	float:left;
 	width:29.33%;
 	position:relative;
 	left:72.67%;
 	overflow:hidden;
 }
-#col3 {
+#positive {
 	float:left;
 	width:29.33%;
 	position:relative;
