@@ -54,10 +54,22 @@ if ($user_id) {
     }
   }
 
+  
 
   $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
-  
+  // Here is an example of a FQL call that fetches all of your friends that are
+  // using this app
+  $app_using_friends = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+  ));
+}
+
+// Fetch the basic info of the app that they are using
+$app_info = $facebook->api('/'. AppInfo::appID());
+
+$app_name = idx($app_info, 'name', '');
 
 
 function assignFriend($status){
