@@ -260,7 +260,7 @@ $app_name = idx($app_info, 'name', '');
 
 
     <!-- Three-up Content Blocks -->
-  <<?php
+  <?php
       if ($user_id) {
     ?>
 
