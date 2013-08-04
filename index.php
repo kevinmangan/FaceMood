@@ -162,11 +162,10 @@ function get_data($url) {
     <meta property="og:description" content="My first app" />
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
-    <script type="text/javascript" src="/stylesheets/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/javascript/jquery-ui.js"></script>
     <script type="text/javascript" src="/ui1/ui/jquery.ui.button.js"></script>
-    <script type="text/javascript" src="/ui1/ui/jquery.ui.core.js"></script>
-    <script type="text/javascript" src="/ui1/ui/jquery-ui.custom.js"></script>
+    
 
     
 
@@ -214,6 +213,9 @@ function get_data($url) {
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+	  
+	  
+	  
     </script>
 
     <script>
@@ -269,7 +271,7 @@ function get_data($url) {
           </style>
           <h1>Welcome to</h1>
           <img id="frontpage" src="logo.png" alt="FaceMood">
-          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
       <?php } ?>
@@ -286,6 +288,15 @@ function get_data($url) {
             window.location.reload();
         });
     }
+	
+	function submitComment(id) {
+		url = "https://graph.facebook.com/" + id + "/comment";
+		content = $form.find('input[id="' + id + '"]').val();
+		var posting = $.post(url, {"message":  content} );
+		posting.done(function(data) {
+			document.write(data);
+		});
+	}
   </script>
 
 
@@ -384,13 +395,13 @@ function get_data($url) {
             
             if(idx($status, 'link') == null){
                 $post_id = idx($status, 'id');
-                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#"  class="button prefix">Post</a></div> </div>';
+                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
                           
 
             }else{
                 $post_id = idx($status, 'id');
                 $url = idx($status, 'link');                     
-                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' . he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" class="button prefix">Post</a>  </div></div>';
+                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' . he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a>  </div></div>';
 
             }
             
