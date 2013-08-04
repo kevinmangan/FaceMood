@@ -54,17 +54,40 @@ if ($user_id) {
     }
   }
 
-  
+if(file_exists('last_post.data')) {
+  $last_post = unserialize(file_get_contents('last_post.data'));
+} else {
+  file_put_contents('last_post.data', serialize(value))
+}
 
+
+if(file_exists('fb_home.data')) {
+  $home = unserialize(file_get_contents('fb_home.data'));
+  if(file_exists('last_post.data')) {
+    $last_post = unserialize(file_get_contents('last_post.data'));
+    if(idx($home[0]),'id') != $last_post) {
+      $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+      file_put_contents('last_post.data', serialize(idx($home[0]),'id'));
+    }
+  } else {
+    $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+    file_put_contents('last_post.data', serialize(idx($home[0]),'id'));
+  }
+}
+
+if (!$home) { // cache doesn't exist or is older than 10 mins
   $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+  file_put_contents('fb_home.data', serialize($home));
+}
+  
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
-  $app_using_friends = $facebook->api(array(
+/*  $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
-}
+}*/
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
@@ -194,7 +217,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-            <img src="logo.png" alt="FaceMood" height="20%" width="20%">
+            <img src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
 
