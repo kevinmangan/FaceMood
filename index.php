@@ -82,7 +82,7 @@ if ($user_id) {
 
       //$home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
-      //echo $home[0];
+      echo $home[0];
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -245,7 +245,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <h1>FaceMood</h1>
+             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
 
