@@ -54,9 +54,35 @@ if ($user_id) {
     }
   }
 
-  
+ /* if(file_exists('./tmp/last_post.data')) {
+    $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
+  } else {
+    file_put_contents('./tmp/last_post.data', serialize(value));
+  }
+*/
 
-  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+  if(file_exists('./tmp/fb_home.data')) {
+    $home = unserialize(file_get_contents('./tmp/fb_home.data'));
+    if(file_exists('./tmp/last_post.data')) {
+      $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
+      if(idx($home[0],'id') != $last_post) {
+        $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+        file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
+      }
+    } else {
+      $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+      file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
+    }
+  }
+
+  if (!$home) { // cache doesn't exist or is older than 10 mins
+    $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+    file_put_contents('tmp/fb_home.data', serialize($home));
+  }
+
+      //$home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+
+      echo $home[0];
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -137,7 +163,6 @@ function get_data($url) {
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
     <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/javascript/jquery-ui.js"></script>
     <script type="text/javascript" src="/ui1/ui/jquery.ui.button.js"></script>
     
 
@@ -220,7 +245,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <h1>FaceMood</h1>
+             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
 
