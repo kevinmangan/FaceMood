@@ -326,7 +326,17 @@ function get_data($url) {
             $id = idx($from, 'id');
             $name = idx($from, 'name');
             
-            $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
+            if(idx($status, 'link') == null){
+                $post_id = idx($status, 'id');
+                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
+                          
+
+            }else{
+                $post_id = idx($status, 'id');
+                $url = idx($status, 'link');                     
+                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
+
+            }
             
             $datResult = assignFriend($message);
             
