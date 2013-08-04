@@ -116,6 +116,8 @@ function get_data($url) {
     -->
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/normalize.css">
+    
+
 
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
@@ -289,21 +291,25 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
         
-			<ul class="friends">
-			</ul>
+          <div class="friends">
+           
+          </div>
          
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
 
-			<ul class="friends">
-            </ul>
+
+          <div class="friends">
+              
+            </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
 
-            <ul class="friends">
-            </ul>
+            <div class="friends">
+      
+            </div>
 
     </div>
   </div> </div></div>
@@ -321,7 +327,7 @@ function get_data($url) {
 						$id = idx($from, 'id');
 						$name = idx($from, 'name');
 						
-						$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+						$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></div>';
 						
 						$datResult = assignFriend($message);
 						
