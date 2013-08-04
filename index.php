@@ -293,7 +293,7 @@ function get_data($url) {
           <!-- Left Nav Section -->
           <ul class="right">
             <li>
-              <a class="fb_button fb_button_medium" onclick="fbLogout()">
+              <a class="button" onclick="fbLogout()">
             </li>
           </ul>
         </section>
@@ -322,7 +322,7 @@ function get_data($url) {
     }
   </script>
 
-  <div class="container">
+  <!-- <div class="container"> -->
     
 
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
@@ -367,7 +367,7 @@ function get_data($url) {
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-  </div>
+ <!-- </div> -->
     
 
 
