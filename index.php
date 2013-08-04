@@ -283,18 +283,18 @@ function get_data($url) {
 				
                 if(assignFriends($message) == "positive" ){  ?>
                     <script>
-                        $('#positive .friends').append(<?php echo $returnHTML; ?>);
+                        $('#positive .friends').append('<?php echo $returnHTML; ?>');
                     </script>
                <?php } elseif(assignFriends($message) == "neutral"){ ?>
                     <script>
-                        $('#neutral .friends').append(<?php echo $returnHTML; ?>);
+                        $('#neutral .friends').append('<?php echo $returnHTML; ?>');
                     </script>
                 <?php } elseif(assignFriends($message) == "negative"){ ?>
                     <script>
-                        $('#negative .friends').append(<?php echo $returnHTML; ?>);
+                        $('#negative .friends').append('<?php echo $returnHTML; ?>');
                     </script>
                 <?php } ?>
-
+		<?php } ?>
 	 <style type="text/css">
 	 
 /* Start of Column CSS */
