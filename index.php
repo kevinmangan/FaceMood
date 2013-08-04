@@ -82,29 +82,29 @@ $app_name = idx($app_info, 'name', '');
 
 
 function assignFriend($status){
-	$daturl = "https://api.sentigem.com/external/get-sentiment?api-key=75bb2830195e0ef2af7714e30bd337df7D-3dzCLGWprRax85XusgTYAJwVH1Bb0&text=";
-	
-	$total = $daturl . urlencode($status);
-	
-	$string = get_data($total);
-	$json_a = json_decode($string,true);
-	
-	$sentiment = $json_a['polarity'];
+  $daturl = "https://api.sentigem.com/external/get-sentiment?api-key=75bb2830195e0ef2af7714e30bd337df7D-3dzCLGWprRax85XusgTYAJwVH1Bb0&text=";
+  
+  $total = $daturl . urlencode($status);
+  
+  $string = get_data($total);
+  $json_a = json_decode($string,true);
+  
+  $sentiment = $json_a['polarity'];
 
-	return $sentiment;
+  return $sentiment;
 }
 
 /* gets the data from a URL */
 function get_data($url) {
-	$ch = curl_init();
-	$timeout = 5;
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-	curl_setopt ($ch, CURLOPT_CAINFO, dirname(__FILE__)."/cacert.pem");
-	$data = curl_exec($ch);
-	curl_close($ch);
-	return $data;
+  $ch = curl_init();
+  $timeout = 5;
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+  curl_setopt ($ch, CURLOPT_CAINFO, dirname(__FILE__)."/cacert.pem");
+  $data = curl_exec($ch);
+  curl_close($ch);
+  return $data;
 }
 
 
@@ -279,35 +279,8 @@ function get_data($url) {
             </li>
           </ul>
         </div>
-      </div>
-      <?php } else { ?>
-      <div>
-        <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
-      </div>
-      <?php } ?>
-    </header>
-
-
-
-    <!-- Three-up Content Blocks -->
-  <?php
-      if ($user_id) {
-    ?>
-
-  <script>
-    function fbLogout() {
-        FB.logout(function (response) {
-            //Do what ever you want here when logged out like reloading the page
-            window.location.reload();
-        });
-    }
-  </script>
-
-  <div class="container">
-    <span id="fbLogout" onclick="fbLogout()"><a class="small button"><span class="fb_button_text">Logout</span></a></span></br>
-      </div>
-
+      </div> -->
+    <div class="fixed"> 
       <nav class="top-bar">
         <ul class="title-area">
            <!-- Title Area -->
@@ -320,51 +293,13 @@ function get_data($url) {
           <!-- Left Nav Section -->
           <ul class="right">
             <li>
-              <a class="button" onclick="fbLogout()">
+              <a href="#" class="button success" onclick="fbLogout()">Logout</a>
             </li>
           </ul>
-         
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-4 large-4 columns" style="background-color:#E0D91B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-6 large-4 columns" style="background-color:#32E01B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
-    
-
-
-  
-
-  <script>
-  document.write('<script src=js/vendor/' +
-  ('__proto__' in {} ? 'zepto' : 'jquery') +
-  '.js><\/script>')
-  </script>
-
-
-  <script src="js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-  <!-- End Footer -->
-
-  <?php }?>
-
         </section>
       </nav>
-
+     </div>
+      
       <?php } else { ?>
       <header class="clearfix">
         <div>
@@ -376,16 +311,6 @@ function get_data($url) {
       
 
 
-
-    <!-- ORIGINAL FACEBOOK SPLASH PAGE -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ORIGINAL FACEBOOK SPLASH PAGE
    <?php
       if ($user_id) {
     ?>
@@ -398,9 +323,7 @@ function get_data($url) {
     }
   </script>
 
-  <!-- <div class="container"> -->
-    
-
+  <div class="container">  
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
           <ul class="friends">
@@ -443,7 +366,7 @@ function get_data($url) {
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
- <!-- </div> -->
+  </div> 
     
 
 
@@ -602,6 +525,8 @@ function get_data($url) {
           <p>Let users find and connect to their friends in mobile apps and games.</p>
         </li>
       </ul>
-    </section> -->
+    </section>
+ -->  
+
   </body>
 </html>
