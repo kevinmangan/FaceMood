@@ -143,7 +143,9 @@ function get_data($url) {
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/normalize.css">
     
-
+    <style>
+      div .splash { background-color: #0069D6; }
+    </style>
 
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
@@ -253,7 +255,7 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
-      <div>
+      <div class="splash">
       <header id="welcome">
         <div align="center">
           
@@ -382,13 +384,16 @@ function get_data($url) {
 						
 						if(idx($status, 'link') == null){
 							$post_id = idx($status, 'id');
+
 							$returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '">&nbsp;&nbsp;<strong>' .  he($name) . '</strong></a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
 									  
 
 						}else{
 							$post_id = idx($status, 'id');
 							$url = idx($status, 'link');                     
+
 							$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '">&nbsp;&nbsp;<strong>' . he($name) . '</strong></a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a>  </div></div>';
+
 
 						}
 						
