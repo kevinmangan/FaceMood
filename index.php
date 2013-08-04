@@ -226,7 +226,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <img style="margin-top:4;" src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
 
@@ -248,7 +248,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <img style="margin-top:4;" src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
       </nav>
@@ -346,6 +346,7 @@ function get_data($url) {
     <div class="small-2 large-4 columns" id="negative" >
           <br>
           <h1>Cheer them up!</h1>
+          <div align="center"><h2>Cheer them up!</h2></div>
           <br>
           <div class="friends">
            
@@ -356,6 +357,7 @@ function get_data($url) {
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
           <h1>Keep calm and carry on.</h1>
+          <div align="center"><h2>Keep calm and carry on.</h2></div>
           <br>
           <div class="friends">
               
@@ -365,6 +367,7 @@ function get_data($url) {
     <div class="small-6 large-4 columns" id="positive" >
             <br>
             <h1>Join in the fun!</h1>
+            <div align="center"><h2>Join in the fun!</h2></div>
             <br>
             <div class="friends">
       
