@@ -57,7 +57,7 @@ if ($user_id) {
 if(file_exists('last_post.data')) {
   $last_post = unserialize(file_get_contents('last_post.data'));
 } else {
-  file_put_contents('last_post.data', serialize(value))
+  file_put_contents('last_post.data', serialize(value));
 }
 
 
