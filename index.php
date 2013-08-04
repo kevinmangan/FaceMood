@@ -256,7 +256,7 @@ function get_data($url) {
       </nav>
      </div>
       <div style="background-color:#391256;">
-      <header id="welcome">
+      <header id="welcome" style="background-color:#391256;">
         <div align="center">
           
           <img id="frontpage" src="logo.png" alt="FaceMood"><br/>
