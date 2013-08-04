@@ -179,7 +179,7 @@ function get_data($url) {
     <![endif]-->
 
   </head>
-  <body>
+  <body style="background-color:#391256;">
 
     <div id="fb-root"></div>
     <script type="text/javascript">
@@ -244,7 +244,7 @@ function get_data($url) {
      </div>
       
       <?php } else { ?>
-
+      <div style="background-color:#391256;">
       <div style="background-color:#391256;"> 
       <nav class="top-bar">
         <ul class="title-area">
@@ -255,15 +255,26 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
-      <div>
-      <header id="welcome">
+      <div style="background-color:#391256;">
+      <header id="welcome" style="background-color:#391256;">
         <div align="center">
           
           <img id="frontpage" src="logo.png" alt="FaceMood"><br/>
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
-      <div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      </div>
       <?php } ?>
       
 
