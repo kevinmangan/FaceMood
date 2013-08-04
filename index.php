@@ -361,20 +361,21 @@ function get_data($url) {
                 $from = idx($status, 'from');
                 $id = idx($from, 'id');
                 $name = idx($from, 'name');
-				//$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
 				
+				$datResult = assignFriend($message);
 				
-                if(assignFriends($message) == "positive" ){  ?>
+                if($datResult == "positive" ){  ?>
                     <script>
-                        $('#positive .friends').append('yay');
+                        $('#positive .friends').append('<?php echo $returnHTML; ?>');
                     </script>
-               <?php } elseif(assignFriends($message) == "neutral"){ ?>
+               <?php } elseif($datResult == "neutral"){ ?>
                     <script>
-                        $('#neutral .friends').append('meh');
+                        $('#neutral .friends').append('<?php echo $returnHTML; ?>');
                     </script>
-                <?php } elseif(assignFriends($message) == "negative"){ ?>
+                <?php } elseif($datResult == "negative"){ ?>
                     <script>
-                        $('#negative .friends').append('boo');
+                        $('#negative .friends').append('<?php echo $returnHTML; ?>');
                     </script>
                 <?php } ?>
 
