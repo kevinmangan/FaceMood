@@ -194,7 +194,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <h1>FaceMood</h1>
+            <img src="logo.png" alt="FaceMood">
            </li>
         </ul>
 
