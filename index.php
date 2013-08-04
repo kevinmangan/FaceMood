@@ -54,44 +54,42 @@ if ($user_id) {
     }
   }
 
-/*if(file_exists('./tmp/last_post.data')) {
-  $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
-} else {
-  file_put_contents('./tmp/last_post.data', serialize(value));
-}
-
-
-if(file_exists('./tmp/fb_home.data')) {
-  $home = unserialize(file_get_contents('./tmp/fb_home.data'));
-  if(file_exists('./tmp/last_post.data')) {
+ /* if(file_exists('./tmp/last_post.data')) {
     $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
-    if(idx($home[0],'id') != $last_post) {
+  } else {
+    file_put_contents('./tmp/last_post.data', serialize(value));
+  }
+*/
+
+  if(file_exists('./tmp/fb_home.data')) {
+    $home = unserialize(file_get_contents('./tmp/fb_home.data'));
+    if(file_exists('./tmp/last_post.data')) {
+      $last_post = unserialize(file_get_contents('./tmp/last_post.data'));
+      if(idx($home[0],'id') != $last_post) {
+        $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+        file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
+      }
+    } else {
       $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
       file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
     }
-  } else {
-    $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-    file_put_contents('./tmp/last_post.data', serialize(idx($home[0]),'id'));
   }
-}
 
-if (!$home) { // cache doesn't exist or is older than 10 mins
-  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-  file_put_contents('./tmp/fb_home.data', serialize($home));
-}*/
+  if (!$home) { // cache doesn't exist or is older than 10 mins
+    $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+    file_put_contents('./tmp/fb_home.data', serialize($home));
+  }
 
-      $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
+      //$home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
       //echo $home[0];
 
-  
-
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
-/*  $app_using_friends = $facebook->api(array(
+  $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  )); */
+  ));
 }
 
 // Fetch the basic info of the app that they are using
@@ -112,10 +110,6 @@ function assignFriend($status){
 
   return $sentiment;
 }
-
-//function comment($id, $comment){
-//    $facebook->api('/' . $id . '/comments/', 'post', array('message' => $comment));
-//}
 
 /* gets the data from a URL */
 function get_data($url) {
@@ -168,7 +162,11 @@ function get_data($url) {
     <meta property="og:description" content="My first app" />
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
-    <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/stylesheets/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-ui.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery.ui.button.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery-ui.custom.js"></script>
 
     
 
@@ -179,6 +177,7 @@ function get_data($url) {
           document.createElement(tags.pop());
       </script>
     <![endif]-->
+
   </head>
   <body>
 
@@ -217,7 +216,26 @@ function get_data($url) {
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
+    <script>
+    $( document ).ready(function() {
+      
+        $("#positiveRefresh").button();
 
+        $('#positiveRefresh').click(function() {
+            //FB.api('/me/home?limit=10', function(response) {
+            //  jQuery.each(response.post, function(){
+            //      //if($('#post' + this.id).val() != null){
+            //          $('#positive .friends').prepend("<div class=\"panel\"><a href=\"https:www.facebook.com/" + this.from.id + "target="_top"><img src=\"https://graph.facebook.com/" + this.from.id + "/picture?type=square\" alt=\""  + this.from.name . "\">" +  this.from.name + "</a><br><br>" +  this.message + "<hr> <div class=\"row collapse\"> <input id=\"" + this.id + "\" type=\"text\" placeholder=\"Comment on their mood...\">  <a href=\"#\"  class=\"button prefix\">Post</a></div> </div>");
+                  //}
+            //  });
+            //});
+        
+            $('#positive .friends').append("<div class=\"panel\">TESTTTTTTT</div>");
+
+        });
+
+    });
+    </script>
 
     
       <?php if (isset($basic)) { ?>
@@ -226,7 +244,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-            <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <h1>FaceMood</h1>
            </li>
         </ul>
 
@@ -245,9 +263,8 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          #frontpage {
-            display: block;
-            margin: 0 auto;
+          div.frontpage {
+            text-align: center;
           }
           </style>
           <h1>Welcome to</h1>
@@ -272,57 +289,59 @@ function get_data($url) {
   </script>
 
 
-	 <style type="text/css">
-			 
-		/* Start of Column CSS */
-		#container3 {
-			clear:left;
-			float:left;
-			width:100%;
-			overflow:hidden;
-			background:#89ffa2; /* column 3 background colour */
-		}
-		#container2 {
-			clear:left;
-			float:left;
-			width:100%;
-			position:relative;
-			right:33.333%;
-			background:#fff689; /* column 2 background colour */
-		}
-		#container1 {
-			float:left;
-			width:100%;
-			position:relative;
-			right:33.33%;
-			background:#ffa7a7; /* column 1 background colour */
-		}
-		#negative {
-			float:left;
-			width:29.33%;
-			position:relative;
-			left:68.67%;
-			overflow:hidden;
-		}
-		#neutral {
-			float:left;
-			width:29.33%;
-			position:relative;
-			left:72.67%;
-			overflow:hidden;
-		}
-		#positive {
-			float:left;
-			width:29.33%;
-			position:relative;
-			left:76.67%;
-			overflow:hidden;
-		}
-	</style>				
+   <style type="text/css">
+       
+    /* Start of Column CSS */
+    #container3 {
+      clear:left;
+      float:left;
+      width:100%;
+      overflow:hidden;
+      background:#89ffa2; /* column 3 background colour */
+    }
+    #container2 {
+      clear:left;
+      float:left;
+      width:100%;
+      position:relative;
+      right:33.333%;
+      background:#fff689; /* column 2 background colour */
+    }
+    #container1 {
+      float:left;
+      width:100%;
+      position:relative;
+      right:33.33%;
+      background:#ffa7a7; /* column 1 background colour */
+    }
+    #negative {
+      float:left;
+      width:29.33%;
+      position:relative;
+      left:68.67%;
+      overflow:hidden;
+    }
+    #neutral {
+      float:left;
+      width:29.33%;
+      position:relative;
+      left:72.67%;
+      overflow:hidden;
+    }
+    #positive {
+      float:left;
+      width:29.33%;
+      position:relative;
+      left:76.67%;
+      overflow:hidden;
+    }
+  </style>        
   <div id="container3">
-  <div id="container2">		
+  <div id="container2">   
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
+          <br>
+          <a id="negativeRefresh" class="button">Refresh</a>
           <br>
           <div class="friends">
            
@@ -332,12 +351,16 @@ function get_data($url) {
     
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
+          <a id="neutralRefresh" class="button">Refresh</a>
+          <br>
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
+            <br>
+            <a id="positiveRefresh" class="button">Refresh</a>
             <br>
             <div class="friends">
       
@@ -349,47 +372,47 @@ function get_data($url) {
 
   <!-- Logic for Sentiment Analysis and jQuery Sorting -->
   <?php
-	
+  
     foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
-				        if(strlen($message) > 6) {				//filter out short messages
-					         $from = idx($status, 'from');
-					         if(idx($from, 'category') == null) { //filter out Facebook Pages
-						          $id = idx($from, 'id');
-						          $name = idx($from, 'name');
-						
-                      if(idx($status, 'link') == null){
-                         // $post_id = idx($status, 'id');
-          						  //  $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
-                          $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
+        if(strlen($message) > 6) {        //filter out short messages
+          $from = idx($status, 'from');
+          if(idx($from, 'category') == null) { //filter out Facebook Pages
+            $id = idx($from, 'id');
+            $name = idx($from, 'name');
+            
+            if(idx($status, 'link') == null){
+                $post_id = idx($status, 'id');
+                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#"  class="button prefix">Post</a></div> </div>';
+                          
 
-          						}else{
-                          //$post_id = idx($status, 'id');
-                         // $url = idx($status, 'link');
-                          $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a></div>';
-                         // $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="large-6 columns"> <div class="row collapse"> <div class="small-10 columns"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> </div> <div class="small-2 columns"> <a href="#"  class="button prefix">Post</a> </div> </div> </div></div>';
+            }else{
+                $post_id = idx($status, 'id');
+                $url = idx($status, 'link');                     
+                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' . he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" class="button prefix">Post</a>  </div></div>';
 
-                      }
-          						$datResult = assignFriend($message);
-          						
-          						if($datResult == "positive" ){  ?>
-          							<script>
-          								$('#positive .friends').append('<?php echo $returnHTML; ?>');
-          							</script>
-          					   <?php } elseif($datResult == "neutral"){ ?>
-          							<script>
-          								$('#neutral .friends').append('<?php echo $returnHTML; ?>');
-          							</script>
-          						<?php } elseif($datResult == "negative"){ ?>
-          							<script>
-          								$('#negative .friends').append('<?php echo $returnHTML; ?>');
-          							</script>
-          						<?php } 
-              		}
-				}
-	}
-				?>
+            }
+            
+            $datResult = assignFriend($message);
+            
+            if($datResult == "positive" ){  ?>
+              <script>
+                $('#positive .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+             <?php } elseif($datResult == "neutral"){ ?>
+              <script>
+                $('#neutral .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+            <?php } elseif($datResult == "negative"){ ?>
+              <script>
+                $('#negative .friends').append('<?php echo $returnHTML; ?>');
+              </script>
+            <?php } 
+            }
+        }
+  }
+        ?>
   
 
   <script>
