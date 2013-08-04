@@ -386,9 +386,9 @@ function get_data($url) {
     foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
-				if(idx($status, 'to') == null //filter out posts to others walls
+				if(idx($status, 'to') == null) { //filter out posts to others walls
 					if(strlen($message) > 6) {        //filter out short messages
-					if(!stristr($message, "happy birthday") || !stristr($message, "happy b-day") || !stristr($message, "happy birth day") || !stristr($message, "feliz cumpleanos")){ //filter out birthdays
+					if((!stristr($message, "happy birthday")) || (!stristr($message, "happy b-day")) || (!stristr($message, "happy birth day")) || (!stristr($message, "feliz cumpleanos"))){ //filter out birthdays
 						  $from = idx($status, 'from');
 						  if(idx($from, 'category') == null) { //filter out Facebook Pages
 							$id = idx($from, 'id');
@@ -424,7 +424,7 @@ function get_data($url) {
 							}
 						}
 					}
-		}
+		}}
 	}
         ?>
   
