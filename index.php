@@ -321,24 +321,24 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
         
-          <ul class="friends">
+          <div class="friends">
            
-          </ul>
+          </div>
          
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
 
-          <ul class="friends">
+          <div class="friends">
               
-            </ul>
+            </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
 
-            <ul class="friends">
+            <div class="friends">
       
-            </ul>
+            </div>
 
     </div>
   </div> </div></div>
@@ -353,7 +353,7 @@ function get_data($url) {
                 $from = idx($status, 'from');
                 $id = idx($from, 'id');
                 $name = idx($from, 'name');
-				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+				$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></div>';
 				
 				$datResult = assignFriend($message);
 				
