@@ -194,7 +194,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <h1>FaceMood</h1>
+            <img src="logo.png" alt="FaceMood" height="20%" width="20%">
            </li>
         </ul>
 
@@ -213,8 +213,9 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          div.frontpage {
-            text-align: center;
+          #frontpage {
+            display: block;
+            margin: 0 auto;
           }
           </style>
           <h1>Welcome to</h1>
