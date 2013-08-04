@@ -400,11 +400,11 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" style="background-color:#E0D91B">
-    
+    data data data
     </div>
     
     <div class="small-6 large-4 columns" id="positive" style="background-color:#32E01B">
-      
+      data data data
     </div>
   </div> 
 </div>
