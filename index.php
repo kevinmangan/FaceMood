@@ -187,36 +187,6 @@ function get_data($url) {
 
     
       <?php if (isset($basic)) { ?>
-      <!-- <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
-
-      <div>
-        <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-        <p class="tagline">
-          This is your app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
-        </p>
-
-        <div id="share-app">
-          <p>Share your app:</p>
-          <ul>
-            <li>
-              <a href="#" class="facebook-button" id="postToWall" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="plus">Post to Wall</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="speech-bubble">Send Message</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                <span class="apprequests">Send Requests</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> -->
     <div class="fixed"> 
       <nav class="top-bar">
         <ul class="title-area">
@@ -245,7 +215,7 @@ function get_data($url) {
             text-align: center;
           }
           </style>
-          <h1>Welcome</h1>
+          <h1>Welcome to</h1>
           <img id="frontpage" src="logo.png" alt="FaceMood">
           <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
         </div>
@@ -268,74 +238,71 @@ function get_data($url) {
 
 
 	 <style type="text/css">
-	 
-/* Start of Column CSS */
-#container3 {
-	clear:left;
-	float:left;
-	width:100%;
-	overflow:hidden;
-	background:#89ffa2; /* column 3 background colour */
-}
-#container2 {
-	clear:left;
-	float:left;
-	width:100%;
-	position:relative;
-	right:33.333%;
-	background:#fff689; /* column 2 background colour */
-}
-#container1 {
-	float:left;
-	width:100%;
-	position:relative;
-	right:33.33%;
-	background:#ffa7a7; /* column 1 background colour */
-}
-#negative {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:68.67%;
-	overflow:hidden;
-}
-#neutral {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:72.67%;
-	overflow:hidden;
-}
-#positive {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:76.67%;
-	overflow:hidden;
-}
-</style>				
+			 
+		/* Start of Column CSS */
+		#container3 {
+			clear:left;
+			float:left;
+			width:100%;
+			overflow:hidden;
+			background:#89ffa2; /* column 3 background colour */
+		}
+		#container2 {
+			clear:left;
+			float:left;
+			width:100%;
+			position:relative;
+			right:33.333%;
+			background:#fff689; /* column 2 background colour */
+		}
+		#container1 {
+			float:left;
+			width:100%;
+			position:relative;
+			right:33.33%;
+			background:#ffa7a7; /* column 1 background colour */
+		}
+		#negative {
+			float:left;
+			width:29.33%;
+			position:relative;
+			left:68.67%;
+			overflow:hidden;
+		}
+		#neutral {
+			float:left;
+			width:29.33%;
+			position:relative;
+			left:72.67%;
+			overflow:hidden;
+		}
+		#positive {
+			float:left;
+			width:29.33%;
+			position:relative;
+			left:76.67%;
+			overflow:hidden;
+		}
+	</style>				
   <div id="container3">
   <div id="container2">		
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
         
-          <ul class="friends">
-           
-          </ul>
+			<ul class="friends">
+			</ul>
          
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
 
-          <ul class="friends">
-              
+			<ul class="friends">
             </ul>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
 
             <ul class="friends">
-      
             </ul>
 
     </div>
@@ -344,32 +311,37 @@ function get_data($url) {
 
   <!-- Logic for Sentiment Analysis and jQuery Sorting -->
   <?php
-
+	
     foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
-                $from = idx($status, 'from');
-                $id = idx($from, 'id');
-                $name = idx($from, 'name');
-				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
-				
-				$datResult = assignFriend($message);
-				
-                if($datResult == "positive" ){  ?>
-                    <script>
-                        $('#positive .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-               <?php } elseif($datResult == "neutral"){ ?>
-                    <script>
-                        $('#neutral .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-                <?php } elseif($datResult == "negative"){ ?>
-                    <script>
-                        $('#negative .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-                <?php } ?>
-
-            <?php } ?>
+				if(strlen($message) > 6) {				//filter out short messages
+					$from = idx($status, 'from');
+					if(idx($from, 'category') == null) { //filter out Facebook Pages
+						$id = idx($from, 'id');
+						$name = idx($from, 'name');
+						
+						$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+						
+						$datResult = assignFriend($message);
+						
+						if($datResult == "positive" ){  ?>
+							<script>
+								$('#positive .friends').append('<?php echo $returnHTML; ?>');
+							</script>
+					   <?php } elseif($datResult == "neutral"){ ?>
+							<script>
+								$('#neutral .friends').append('<?php echo $returnHTML; ?>');
+							</script>
+						<?php } elseif($datResult == "negative"){ ?>
+							<script>
+								$('#negative .friends').append('<?php echo $returnHTML; ?>');
+							</script>
+						<?php } 
+						}
+				}
+	}
+				?>
   
 
   <script>
