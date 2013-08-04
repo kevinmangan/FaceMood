@@ -115,7 +115,8 @@ function get_data($url) {
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
     -->
     <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css"> 
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
@@ -217,25 +218,12 @@ function get_data($url) {
           </ul>
         </div>
       </div> -->
-    <div class="fixed"> 
-      <nav class="top-bar">
-        <ul class="title-area">
-           <!-- Title Area -->
-           <li class="name">
-             <h1>FaceMood</h1>
-           </li>
+    <div class="navbar">
+        <a class="navbar-brand" href="#">FaceMood</a>
+        <ul class="nav navbar-nav">
+          <li><button type="button" class="btn btn-danger" onclick="fbLogout()">Logout</a></li>
         </ul>
-
-        <section class="top-bar-section">
-          <!-- Left Nav Section -->
-          <ul class="right">
-            <li>
-              <a href="#" class="button success" onclick="fbLogout()">Logout</a>
-            </li>
-          </ul>
-        </section>
-      </nav>
-     </div>
+    </div>
       
       <?php } else { ?>
       <header class="clearfix">
