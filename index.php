@@ -280,7 +280,7 @@ function get_data($url) {
           </ul>
         </div>
       </div> -->
-
+    <div class="fixed"> 
       <nav class="top-bar">
         <ul class="title-area">
            <!-- Title Area -->
@@ -293,12 +293,13 @@ function get_data($url) {
           <!-- Left Nav Section -->
           <ul class="right">
             <li>
-              <a class="button" onclick="fbLogout()">
+              <a href="#" class="button success" onclick="fbLogout()">Logout</a>
             </li>
           </ul>
         </section>
       </nav>
-
+     </div>
+      
       <?php } else { ?>
       <header class="clearfix">
         <div>
@@ -322,9 +323,7 @@ function get_data($url) {
     }
   </script>
 
-  <!-- <div class="container"> -->
-    
-
+  <div class="container">  
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
           <ul class="friends">
@@ -367,7 +366,7 @@ function get_data($url) {
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
- <!-- </div> -->
+  </div> 
     
 
 
