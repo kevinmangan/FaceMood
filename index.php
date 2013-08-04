@@ -326,7 +326,7 @@ function get_data($url) {
 						$id = idx($from, 'id');
 						$name = idx($from, 'name');
 						
-						$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br>' . he($message) . '</div>';
+						$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
 						
 						$datResult = assignFriend($message);
 						
