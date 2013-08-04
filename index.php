@@ -243,7 +243,7 @@ function get_data($url) {
       
       <?php } else { ?>
 
-      <div class="fixed"> 
+      <div> 
       <nav class="top-bar">
         <ul class="title-area">
            <!-- Title Area -->
@@ -253,6 +253,7 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
+      <div>
       <header id="welcome" class="clearfix">
         <div>
           <style>
@@ -265,6 +266,7 @@ function get_data($url) {
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
+      <div>
       <?php } ?>
       
 
@@ -342,7 +344,7 @@ function get_data($url) {
   <div id="container2">   
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
-        
+          <br>
           <div class="friends">
            
           </div>
@@ -350,14 +352,14 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
-          
+          <br>
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
-          
+            <br>
             <div class="friends">
       
             </div>
