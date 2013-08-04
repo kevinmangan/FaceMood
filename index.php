@@ -236,7 +236,7 @@ function get_data($url) {
           <!-- Left Nav Section -->
           <ul class="right">
             <li>
-              <a href="#" class="button success" onclick="fbLogout()">Logout</a>
+              <a style="margin-right:10;" href="#" class="button success" onclick="fbLogout()">Logout</a>
             </li>
           </ul>
         </section>
@@ -342,7 +342,7 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
           <br>
-          <h3>Cheer them up!</h3>
+          <h3 style="font-family:tahoma;">Cheer them up!</h3>
           <br>
           <div class="friends">
            
@@ -352,7 +352,7 @@ function get_data($url) {
     
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
-          <h3>Keep calm and carry on.</h3>
+          <h3 style="font-family:tahoma;">Keep calm and carry on.</h3>
           <br>
           <div class="friends">
               
@@ -361,7 +361,7 @@ function get_data($url) {
     
     <div class="small-6 large-4 columns" id="positive" >
             <br>
-            <h3>Join in the fun!</h3>
+            <h3 style="font-family:tahoma;">Join in the fun!</h3>
             <br>
             <div class="friends">
       
