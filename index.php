@@ -242,7 +242,18 @@ function get_data($url) {
      </div>
       
       <?php } else { ?>
-      <header class="clearfix">
+
+      <div class="fixed"> 
+      <nav class="top-bar">
+        <ul class="title-area">
+           <!-- Title Area -->
+           <li class="name">
+             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+           </li>
+        </ul>
+      </nav>
+     </div>
+      <header id="welcome" class="clearfix">
         <div>
           <style>
           div.frontpage {
