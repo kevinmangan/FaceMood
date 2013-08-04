@@ -323,58 +323,7 @@ function get_data($url) {
     }
   </script>
   
-  <style media="screen" type="text/css">
-  /* <!-- */
-/* Start of Column CSS */
-#container3 {
-	clear:left;
-	float:left;
-	width:100%;
-	overflow:hidden;
-	background:#89ffa2; /* column 3 background colour */
-}
-#container2 {
-	clear:left;
-	float:left;
-	width:100%;
-	position:relative;
-	right:33.333%;
-	background:#ffa7a7; /* column 2 background colour */
-}
-#container1 {
-	float:left;
-	width:100%;
-	position:relative;
-	right:33.33%;
-	background:#fff689; /* column 1 background colour */
-}
-#negative {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:68.67%;
-	overflow:hidden;
-}
-#neutral {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:72.67%;
-	overflow:hidden;
-}
-#positive {
-	float:left;
-	width:29.33%;
-	position:relative;
-	left:76.67%;
-	overflow:hidden;
-}
-/* --> */
-  
-  </style>
-<div class="container3">
-<div class="container2">
-  <div class="container1">  
+  <div class="container">  
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
           <ul class="friends">
@@ -407,8 +356,6 @@ function get_data($url) {
       data data data
     </div>
   </div> 
-</div>
-</div>
 
   
 
