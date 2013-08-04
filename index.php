@@ -255,13 +255,8 @@ function get_data($url) {
      </div>
       <div>
       <header id="welcome">
-        <div>
-          <style>
-          div.frontpage {
-            text-align: center;
-          }
-          </style>
-          <h1>Welcome to</h1>
+        <div align="center">
+          
           <img id="frontpage" src="logo.png" alt="FaceMood"><br/>
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
@@ -346,7 +341,7 @@ function get_data($url) {
     <div class="small-2 large-4 columns" id="negative" >
           <br>
           <h1>Cheer them up!</h1>
-          <div align="center"><h2>Cheer them up!</h2></div>
+          <div align="center"><h3>Cheer them up!</h3></div>
           <br>
           <div class="friends">
            
@@ -357,7 +352,7 @@ function get_data($url) {
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
           <h1>Keep calm and carry on.</h1>
-          <div align="center"><h2>Keep calm and carry on.</h2></div>
+          <div align="center"><h3>Keep calm and carry on.</h3></div>
           <br>
           <div class="friends">
               
@@ -367,7 +362,7 @@ function get_data($url) {
     <div class="small-6 large-4 columns" id="positive" >
             <br>
             <h1>Join in the fun!</h1>
-            <div align="center"><h2>Join in the fun!</h2></div>
+            <div align="center"><h3>Join in the fun!</h3></div>
             <br>
             <div class="friends">
       
