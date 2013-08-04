@@ -179,7 +179,7 @@ function get_data($url) {
     <![endif]-->
 
   </head>
-  <body>
+  <body style="background-color:#391256;">
 
     <div id="fb-root"></div>
     <script type="text/javascript">
