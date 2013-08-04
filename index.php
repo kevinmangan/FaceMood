@@ -250,7 +250,7 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          #frontpage {
+          div.frontpage {
             margin-left: auto;
             margin-right: auto;
           }
