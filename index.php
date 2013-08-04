@@ -77,7 +77,7 @@ if ($user_id) {
 
   if (!$home) { // cache doesn't exist or is older than 10 mins
     $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
-    file_put_contents('./tmp/fb_home.data', serialize($home));
+    file_put_contents('tmp/fb_home.data', serialize($home));
   }
 
       //$home = idx($facebook->api('/me/home?limit=100'), 'data', array());
