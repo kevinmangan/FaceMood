@@ -363,7 +363,7 @@ function get_data($url) {
 		$message = idx($status, 'message');
 		if(idx($status, 'to') == null) { //filter out posts to others walls
 			if(strlen($message) > 6) {        //filter out short messages
-				if((!stristr($message, "happy birthday")) || (!stristr($message, "happy b-day")) || (!stristr($message, "happy birth day")) || (!stristr($message, "feliz cumpleanos"))){ //filter out birthdays
+				if((!stristr(he($message), "happy birthday")) || (!stristr(he($message), "happy b-day")) || (!stristr(he($message), "happy birth day")) || (!stristr(he($message), "feliz cumpleanos"))){ //filter out birthdays
 					  $from = idx($status, 'from');
 					  if(idx($from, 'category') == null) { //filter out Facebook Pages
 						$id = idx($from, 'id');
