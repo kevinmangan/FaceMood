@@ -255,7 +255,7 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
-      <div class="splash">
+      <div style="background-color:#391256;">
       <header id="welcome">
         <div align="center">
           
