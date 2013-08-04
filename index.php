@@ -226,7 +226,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <img style="margin-top:4;" src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <img style="margin-top:10;" src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
 
@@ -248,7 +248,7 @@ function get_data($url) {
         <ul class="title-area">
            <!-- Title Area -->
            <li class="name">
-             <img style="margin-top:4;" src="logo.png" alt="FaceMood" height="25%" width="25%">
+             <img style="margin-top:10;" src="logo.png" alt="FaceMood" height="25%" width="25%">
            </li>
         </ul>
       </nav>
@@ -340,8 +340,6 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
           <br>
-          <h1>Cheer them up!</h1>
-          <div align="center"><h3>Cheer them up!</h3></div>
           <br>
           <div class="friends">
            
@@ -351,8 +349,6 @@ function get_data($url) {
     
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
-          <h1>Keep calm and carry on.</h1>
-          <div align="center"><h3>Keep calm and carry on.</h3></div>
           <br>
           <div class="friends">
               
@@ -361,8 +357,6 @@ function get_data($url) {
     
     <div class="small-6 large-4 columns" id="positive" >
             <br>
-            <h1>Join in the fun!</h1>
-            <div align="center"><h3>Join in the fun!</h3></div>
             <br>
             <div class="friends">
       
@@ -388,7 +382,7 @@ function get_data($url) {
 						
 						if(idx($status, 'link') == null){
 							$post_id = idx($status, 'id');
-							$returnHTML = '<div id="post' . he($post_id) . '" class="panel"><s<a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '">&nbsp;&nbsp;<strong>' .  he($name) . '</strong></a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
+							$returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '">&nbsp;&nbsp;<strong>' .  he($name) . '</strong></a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
 									  
 
 						}else{
