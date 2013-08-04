@@ -65,7 +65,7 @@ if(file_exists('fb_home.data')) {
   $home = unserialize(file_get_contents('fb_home.data'));
   if(file_exists('last_post.data')) {
     $last_post = unserialize(file_get_contents('last_post.data'));
-    if(idx($home[0]),'id') != $last_post) {
+    if((idx($home[0]),'id') != $last_post) {
       $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
       file_put_contents('last_post.data', serialize(idx($home[0]),'id'));
     }
