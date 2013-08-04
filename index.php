@@ -147,6 +147,21 @@ function get_data($url) {
           document.createElement(tags.pop());
       </script>
     <![endif]-->
+<script>
+    $( document ).ready(function() {
+    
+        $("#positiveRefresh").click(function() {
+            FB.api('/me/home?limit=10', function(response) {
+              jQuery.each(response.post, function(){
+                  if(document.getElementById("post" + this.id) == null){
+                      $("#positive .friends").prepend("<div class=\"panel\"><a href=\"https:www.facebook.com/" + this.from.id + "target="_top"><img src=\"https://graph.facebook.com/" + this.from.id + "/picture?type=square\" alt=\""  + this.from.name . "\"> +  this.from.name + "</a><br><br>" +  this.message + "<hr> <div class=\"row collapse\"> <input id=\"" + this.id + "\" type=\"text\" placeholder=\"Comment on their mood...\">  <a href=\"#\"  class=\"button prefix\">Post</a></div> </div>");
+                  }
+              });
+            });
+        });
+
+    });
+</script>
   </head>
   <body>
 
@@ -291,6 +306,8 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
           <br>
+          <a href="#" id="negativeRefresh" class="button">Refresh</a>
+          <br>
           <div class="friends">
            
           </div>
@@ -299,12 +316,16 @@ function get_data($url) {
     
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
+          <a href="#" id="neutralRefresh" class="button">Refresh</a>
+          <br>
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
+            <br>
+            <a href="#" id="positiveRefresh" class="button">Refresh</a>
             <br>
             <div class="friends">
       
@@ -328,7 +349,7 @@ function get_data($url) {
             
             if(idx($status, 'link') == null){
                 $post_id = idx($status, 'id');
-                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#"  class="button prefix">Post</a></div> </div>';
+                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#"  class="button prefix">Post</a></div> </div>';
                           
 
             }else{
