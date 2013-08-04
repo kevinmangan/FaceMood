@@ -136,7 +136,11 @@ function get_data($url) {
     <meta property="og:description" content="My first app" />
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
-    <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/stylesheets/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-ui.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery.ui.button.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/ui1/ui/jquery-ui.custom.js"></script>
 
     
 
@@ -200,7 +204,7 @@ function get_data($url) {
             //  });
             //});
         
-            $('#positive .friends').prepend("<div class=\"panel\">TESTTTTTTT</div>");
+            $('#positive .friends').append("<div class=\"panel\">TESTTTTTTT</div>");
 
         });
 
