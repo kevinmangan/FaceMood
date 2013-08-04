@@ -217,26 +217,7 @@ function get_data($url) {
 	  
     </script>
 
-    <script>
-    $( document ).ready(function() {
-      
-        $("#positiveRefresh").button();
-
-        $('#positiveRefresh').click(function() {
-            //FB.api('/me/home?limit=10', function(response) {
-            //  jQuery.each(response.post, function(){
-            //      //if($('#post' + this.id).val() != null){
-            //          $('#positive .friends').prepend("<div class=\"panel\"><a href=\"https:www.facebook.com/" + this.from.id + "target="_top"><img src=\"https://graph.facebook.com/" + this.from.id + "/picture?type=square\" alt=\""  + this.from.name . "\">" +  this.from.name + "</a><br><br>" +  this.message + "<hr> <div class=\"row collapse\"> <input id=\"" + this.id + "\" type=\"text\" placeholder=\"Comment on their mood...\">  <a href=\"#\"  class=\"button prefix\">Post</a></div> </div>");
-                  //}
-            //  });
-            //});
-        
-            $('#positive .friends').append("<div class=\"panel\">TESTTTTTTT</div>");
-
-        });
-
-    });
-    </script>
+    
 
     
       <?php if (isset($basic)) { ?>
@@ -350,9 +331,7 @@ function get_data($url) {
   <div id="container2">   
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
-          <br>
-          <a id="negativeRefresh" class="button">Refresh</a>
-          <br>
+        
           <div class="friends">
            
           </div>
@@ -360,18 +339,14 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
-          <br>
-          <a id="neutralRefresh" class="button">Refresh</a>
-          <br>
+          
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
-            <br>
-            <a id="positiveRefresh" class="button">Refresh</a>
-            <br>
+          
             <div class="friends">
       
             </div>
@@ -384,44 +359,48 @@ function get_data($url) {
   <?php
   
     foreach ($home as $status) {
-                // Extract the pieces of info we need from the requests above
-                $message = idx($status, 'message');
-        if(strlen($message) > 6) {        //filter out short messages
-          $from = idx($status, 'from');
-          if(idx($from, 'category') == null) { //filter out Facebook Pages
-            $id = idx($from, 'id');
-            $name = idx($from, 'name');
-            
-            if(idx($status, 'link') == null){
-                $post_id = idx($status, 'id');
-                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
-                          
+		// Extract the pieces of info we need from the requests above
+		$message = idx($status, 'message');
+		if(idx($status, 'to') == null) { //filter out posts to others walls
+			if(strlen($message) > 6) {        //filter out short messages
+				if((!stristr($message, "happy birthday")) || (!stristr($message, "happy b-day")) || (!stristr($message, "happy birth day")) || (!stristr($message, "feliz cumpleanos"))){ //filter out birthdays
+					  $from = idx($status, 'from');
+					  if(idx($from, 'category') == null) { //filter out Facebook Pages
+						$id = idx($from, 'id');
+						$name = idx($from, 'name');
+						
+						if(idx($status, 'link') == null){
+							$post_id = idx($status, 'id');
+							$returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a></div> </div>';
+									  
 
-            }else{
-                $post_id = idx($status, 'id');
-                $url = idx($status, 'link');                     
-                $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' . he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a>  </div></div>';
+						}else{
+							$post_id = idx($status, 'id');
+							$url = idx($status, 'link');                     
+							$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' . he($name) . '</a><br><br><a href="' . he($url) . '" target="_blank">' . he($message) . '</a><hr> <div class="row collapse"> <input type="text" id="' . he($post_id) . '" placeholder="Comment on their mood..."> <a href="#" onclick="submitComment(' . he($post_id) . ')" class="button prefix">Post</a>  </div></div>';
 
-            }
-            
-            $datResult = assignFriend($message);
-            
-            if($datResult == "positive" ){  ?>
-              <script>
-                $('#positive .friends').append('<?php echo $returnHTML; ?>');
-              </script>
-             <?php } elseif($datResult == "neutral"){ ?>
-              <script>
-                $('#neutral .friends').append('<?php echo $returnHTML; ?>');
-              </script>
-            <?php } elseif($datResult == "negative"){ ?>
-              <script>
-                $('#negative .friends').append('<?php echo $returnHTML; ?>');
-              </script>
-            <?php } 
-            }
-        }
-  }
+						}
+						
+						$datResult = assignFriend($message);
+						
+						if($datResult == "positive" ){  ?>
+						  <script>
+							$('#positive .friends').append('<?php echo $returnHTML; ?>');
+						  </script>
+						 <?php } elseif($datResult == "neutral"){ ?>
+						  <script>
+							$('#neutral .friends').append('<?php echo $returnHTML; ?>');
+						  </script>
+						<?php } elseif($datResult == "negative"){ ?>
+						  <script>
+							$('#negative .friends').append('<?php echo $returnHTML; ?>');
+						  </script>
+						<?php } 
+					}
+				}
+			}
+		}
+	}
         ?>
   
 
