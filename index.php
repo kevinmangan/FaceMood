@@ -91,9 +91,9 @@ $app_name = idx($app_info, 'name', '');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
 
     <title><?php echo he($app_name); ?></title>
-      <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <!--<link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
-
+    -->
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/normalize.css">
 
@@ -219,9 +219,9 @@ $app_name = idx($app_info, 'name', '');
 
 
 
-    <header class="clearfix">
+    
       <?php if (isset($basic)) { ?>
-      <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
+      <!-- <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
         <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
@@ -250,21 +250,39 @@ $app_name = idx($app_info, 'name', '');
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
+
+      <nav class="top-bar">
+        <ul class="title-area">
+           <!-- Title Area -->
+           <li class="name">
+             <h1>FaceMood</h1>
+           </li>
+        </ul>
+
+        <section class="top-bar-section">
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li>
+              <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
+            </li>
+          </ul>
+        </section>
+      </nav>
+
       <?php } else { ?>
-      <div>
-        <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
-      </div>
+      <header class="clearfix">
+        <div>
+          <h1>Welcome</h1>
+          <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+        </div>
       <?php } ?>
     </header>
 
 
-    <!-- Three-up Content Blocks -->
-<!--   <<?php
+   <?php
       if ($user_id) {
     ?>
-
   <script>
     function fbLogout() {
         FB.logout(function (response) {
@@ -275,95 +293,7 @@ $app_name = idx($app_info, 'name', '');
   </script>
 
   <div class="container">
-    <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
-
-    <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
-        
-          <ul class="friends">
-            <?php
-              foreach ($friends as $friend) {
-                // Extract the pieces of info we need from the requests above
-                $id = idx($friend, 'id');
-                $name = idx($friend, 'name');
-            ?>
-            <li>
-              <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-                <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-                <?php echo he($name); ?>
-              </a>
-            </li>
-            <?php
-              }
-            ?>
-          </ul>
-         
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-4 large-4 columns" style="background-color:#E0D91B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-6 large-4 columns" style="background-color:#32E01B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
     
-
-
-  
-
-  <script>
-  document.write('<script src=js/vendor/' +
-  ('__proto__' in {} ? 'zepto' : 'jquery') +
-  '.js><\/script>')
-  </script>
-
-
-  <script src="js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-  
-
-  <?php }?> -->
-
-  <!-- End Footer -->
-
-
-
-    
-
-    <!-- ORIGINAL FACEBOOK SPLASH PAGE -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-   <<?php
-      if ($user_id) {
-    ?>
-
-  <script>
-    function fbLogout() {
-        FB.logout(function (response) {
-            //Do what ever you want here when logged out like reloading the page
-            window.location.reload();
-        });
-    }
-  </script>
-
-  <div class="container">
-    <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
 
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
