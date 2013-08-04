@@ -255,13 +255,8 @@ function get_data($url) {
      </div>
       <div>
       <header id="welcome">
-        <div>
-          <style>
-          div.frontpage {
-            text-align: center;
-          }
-          </style>
-          <h1>Welcome to</h1>
+        <div align="center">
+          
           <img id="frontpage" src="logo.png" alt="FaceMood"><br/>
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
