@@ -189,6 +189,7 @@ function get_data($url) {
     <script>
     $( document ).ready(function() {
       
+        $("#positiveRefresh").button();
 
         $('#positiveRefresh').click(function() {
             FB.api('/me/home?limit=10', function(response) {
