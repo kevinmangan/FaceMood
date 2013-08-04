@@ -94,7 +94,7 @@ $app_name = idx($app_info, 'name', '');
 
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/normalize.css">
-    
+
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
     <![endif]-->
@@ -259,8 +259,22 @@ $app_name = idx($app_info, 'name', '');
 
 
     <!-- Three-up Content Blocks -->
-<!--   <?php if (isset($basic)) { ?>
-  <div class="container"> 
+  <<?php
+      if ($user_id) {
+    ?>
+
+  <script>
+    function fbLogout() {
+        FB.logout(function (response) {
+            //Do what ever you want here when logged out like reloading the page
+            window.location.reload();
+        });
+    }
+  </script>
+
+  <div class="container">
+    <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
+
     <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
         
           <ul class="friends">
@@ -298,7 +312,7 @@ $app_name = idx($app_info, 'name', '');
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-  </div> -->
+  </div>
     
 
 
@@ -331,7 +345,7 @@ $app_name = idx($app_info, 'name', '');
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  ORIGINAL FACEBOOK SPLASH PAGE
+  <!-- ORIGINAL FACEBOOK SPLASH PAGE
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -464,7 +478,7 @@ $app_name = idx($app_info, 'name', '');
           <p>Let users find and connect to their friends in mobile apps and games.</p>
         </li>
       </ul>
-    </section>
+    </section> -->
    
 
   </body>
