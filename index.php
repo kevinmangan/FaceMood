@@ -262,9 +262,9 @@ $app_name = idx($app_info, 'name', '');
 
         <section class="top-bar-section">
           <!-- Left Nav Section -->
-          <ul class="left">
+          <ul class="right">
             <li>
-              <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
+              <a class="fb_button fb_button_medium" onclick="fbLogout()">
             </li>
           </ul>
         </section>
@@ -276,8 +276,9 @@ $app_name = idx($app_info, 'name', '');
           <h1>Welcome</h1>
           <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
         </div>
+      </header>
       <?php } ?>
-    </header>
+      
 
 
    <?php
@@ -355,6 +356,12 @@ $app_name = idx($app_info, 'name', '');
     $(document).foundation();
   </script>
   <!-- End Footer -->
+
+
+<!--
+
+ Original Facebook Logout Button
+ <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium" onclick="fbLogout()"><span class="fb_button_text">Logout</span></a></span>
 
   <?php }?>
   ORIGINAL FACEBOOK SPLASH PAGE
@@ -491,7 +498,7 @@ $app_name = idx($app_info, 'name', '');
         </li>
       </ul>
     </section>
-   
+ -->  
 
   </body>
 </html>
