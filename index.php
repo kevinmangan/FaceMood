@@ -249,8 +249,15 @@ function get_data($url) {
       <?php } else { ?>
       <header class="clearfix">
         <div>
+          <style>
+          #frontpage {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          </style>
           <h1>Welcome</h1>
-          <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          <img id="frontpage" src="logo.jpg" alt="FaceMood">
+          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
         </div>
       </header>
       <?php } ?>
@@ -269,32 +276,7 @@ function get_data($url) {
     }
   </script>
 
-  <!-- Logic for Sentiment Analysis and jQuery Sorting -->
-  <?php
 
-    foreach ($home as $status) {
-                // Extract the pieces of info we need from the requests above
-                $message = idx($status, 'message');
-                $from = idx($status, 'from');
-                $id = idx($from, 'id');
-                $name = idx($from, 'name');
-				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
-				
-				
-                if(assignFriends($message) == "positive" ){  ?>
-                    <script>
-                        $('#positive .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-               <?php } elseif(assignFriends($message) == "neutral"){ ?>
-                    <script>
-                        $('#neutral .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-                <?php } elseif(assignFriends($message) == "negative"){ ?>
-                    <script>
-                        $('#negative .friends').append('<?php echo $returnHTML; ?>');
-                    </script>
-                <?php } ?>
-		<?php } ?>
 	 <style type="text/css">
 	 
 /* Start of Column CSS */
@@ -370,7 +352,33 @@ function get_data($url) {
   </div> </div></div>
     
 
+  <!-- Logic for Sentiment Analysis and jQuery Sorting -->
+  <?php
 
+    foreach ($home as $status) {
+                // Extract the pieces of info we need from the requests above
+                $message = idx($status, 'message');
+                $from = idx($status, 'from');
+                $id = idx($from, 'id');
+                $name = idx($from, 'name');
+				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+				
+				
+                if(assignFriends($message) == "positive" ){  ?>
+                    <script>
+                        $('#positive .friends').append('<?php echo $returnHTML; ?>');
+                    </script>
+               <?php } elseif(assignFriends($message) == "neutral"){ ?>
+                    <script>
+                        $('#neutral .friends').append('<?php echo $returnHTML; ?>');
+                    </script>
+                <?php } elseif(assignFriends($message) == "negative"){ ?>
+                    <script>
+                        $('#negative .friends').append('<?php echo $returnHTML; ?>');
+                    </script>
+                <?php } ?>
+
+            <?php } ?>
   
 
   <script>
@@ -387,13 +395,13 @@ function get_data($url) {
   <!-- End Footer -->
 
 
-<!--
 
- Original Facebook Logout Button
- <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium" onclick="fbLogout()"><span class="fb_button_text">Logout</span></a></span>
+
+<!--  Original Facebook Logout Button
+<span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium" onclick="fbLogout()"><span class="fb_button_text">Logout</span></a></span>
 
   <?php }?>
-  ORIGINAL FACEBOOK SPLASH PAGE
+  <!-- ORIGINAL FACEBOOK SPLASH PAGE 
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -526,8 +534,8 @@ function get_data($url) {
           <p>Let users find and connect to their friends in mobile apps and games.</p>
         </li>
       </ul>
-    </section>
- -->  
+    </section> -->
+   
 
   </body>
 </html>
