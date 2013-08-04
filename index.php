@@ -278,42 +278,20 @@ function get_data($url) {
                 $from = idx($status, 'from');
                 $id = idx($from, 'id');
                 $name = idx($from, 'name');
+				$returnHTML = '<li><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . he($message) . '</a></li>';
+				
 				
                 if(assignFriends($message) == "positive" ){  ?>
                     <script>
-                        $('#positive .friends').append(
-                                      '<li>' + 
-                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
-                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
-                                          '<?php echo he($name); ?>' +
-                                          '<?php echo he($message); ?> ' +
-                                        '</a>' +
-                                      '</li>'
-                        );
+                        $('#positive .friends').append(<?php echo $returnHTML; ?>);
                     </script>
                <?php } elseif(assignFriends($message) == "neutral"){ ?>
                     <script>
-                        $('#neutral .friends').append(
-                                      '<li>' + 
-                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
-                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
-                                          '<?php echo he($name); ?>' +
-                                          '<?php echo he($message); ?> ' +
-                                        '</a>' +
-                                      '</li>'
-                        );
+                        $('#neutral .friends').append(<?php echo $returnHTML; ?>);
                     </script>
                 <?php } elseif(assignFriends($message) == "negative"){ ?>
                     <script>
-                        $('#negative .friends').append(
-                                      '<li>' + 
-                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
-                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
-                                          '<?php echo he($name); ?>' +
-                                          '<?php echo he($message); ?> ' +
-                                        '</a>' +
-                                      '</li>'
-                        );
+                        $('#negative .friends').append(<?php echo $returnHTML; ?>);
                     </script>
                 <?php } ?>
 
