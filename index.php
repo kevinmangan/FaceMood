@@ -65,6 +65,8 @@ if ($user_id) {
   // And this returns 16 of your photos.
   $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
 
+  $home = idx($facebook->api('/me/home?limit=25'), 'data', array());
+
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
   $app_using_friends = $facebook->api(array(
@@ -252,7 +254,7 @@ $app_name = idx($app_info, 'name', '');
       <?php } else { ?>
       <div>
         <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
       </div>
       <?php } ?>
     </header>
@@ -363,19 +365,22 @@ $app_name = idx($app_info, 'name', '');
   <div class="container">
     <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
 
-    <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
+    <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
           <ul class="friends">
             <?php
-              foreach ($friends as $friend) {
+              foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
-                $id = idx($friend, 'id');
-                $name = idx($friend, 'name');
+                $message = idx($status, 'message');
+                $from = idx($status, 'from');
+                $id = idx($from, 'id');
+                $name = idx($from, 'name');
             ?>
             <li>
               <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
                 <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
                 <?php echo he($name); ?>
+                <?php echo he($message); ?>
               </a>
             </li>
             <?php
@@ -388,13 +393,15 @@ $app_name = idx($app_info, 'name', '');
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-    <div class="small-4 large-4 columns" style="background-color:#E0D91B">
+    
+    <div class="small-4 large-4 columns" id="neutral" style="background-color:#E0D91B">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-    <div class="small-6 large-4 columns" style="background-color:#32E01B">
+    
+    <div class="small-6 large-4 columns" id="positive" style="background-color:#32E01B">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
