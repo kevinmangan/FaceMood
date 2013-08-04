@@ -82,7 +82,7 @@ if ($user_id) {
 
       //$home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
-      echo $home[0];
+      //echo $home[0];
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -250,8 +250,8 @@ function get_data($url) {
           }
           </style>
           <h1>Welcome to</h1>
-          <img id="frontpage" src="logo.png" alt="FaceMood">
-          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
+          <img id="frontpage" src="logo.png" alt="FaceMood"><br/>
+          <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
       <?php } ?>
