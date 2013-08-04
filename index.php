@@ -291,7 +291,7 @@ function get_data($url) {
                                       </li>
                         );
                     </script>
-               <?php } else if(assignFriends($message) == "neutral"){ ?>
+               <?php } elseif(assignFriends($message) == "neutral"){ ?>
                     <script>
                         $('#neutral .friends').append(
                                       <li>
@@ -303,7 +303,7 @@ function get_data($url) {
                                       </li>
                         );
                     </script>
-                <?php } else if(assignFriends($message) == "negative"){ ?>
+                <?php } elseif(assignFriends($message) == "negative"){ ?>
                     <script>
                         $('#neutral .friends').append(
                                       <li>
