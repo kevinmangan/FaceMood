@@ -82,7 +82,7 @@ if (!$home) { // cache doesn't exist or is older than 10 mins
 
       $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
-      echo $home[0];
+      //echo $home[0];
 
   
 
