@@ -290,7 +290,7 @@ function get_data($url) {
   <div id="container2">		
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
-        
+          <br>
           <div class="friends">
            
           </div>
@@ -298,15 +298,14 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
-
-
+          <br>
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
-
+            <br>
             <div class="friends">
       
             </div>
