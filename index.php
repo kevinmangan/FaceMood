@@ -184,6 +184,9 @@ function get_data($url) {
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+	  
+	  
+	  
     </script>
 
     <script>
@@ -236,7 +239,7 @@ function get_data($url) {
           </style>
           <h1>Welcome to</h1>
           <img id="frontpage" src="logo.png" alt="FaceMood">
-          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
       <?php } ?>
@@ -253,6 +256,15 @@ function get_data($url) {
             window.location.reload();
         });
     }
+	
+	function submitComment(id) {
+		url = "https://graph.facebook.com/" + id + "/comment";
+		content = $form.find('input[id="' + id + '"]').val();
+		var posting = $.post(url, {"message":  content} );
+		posting.done(function(data) {
+			document.write(data);
+		});
+	}
   </script>
 
 
@@ -351,7 +363,7 @@ function get_data($url) {
             
             if(idx($status, 'link') == null){
                 $post_id = idx($status, 'id');
-                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#"  class="button prefix">Post</a></div> </div>';
+                $returnHTML = '<div id="post' . he($post_id) . '" class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '<hr> <div class="row collapse"> <input id="' . he($post_id) . '" type="text" placeholder="Comment on their mood...">  <a href="#" onclick="submitComment('<?php echo he($post_id); ?>') class="button prefix">Post</a></div> </div>';
                           
 
             }else{
