@@ -345,7 +345,7 @@ function get_data($url) {
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
           <br>
-          <h1>Cheer them up!</h1>h1>
+          <h1>Cheer them up!</h1>
           <br>
           <div class="friends">
            
@@ -355,7 +355,7 @@ function get_data($url) {
     
     <div class="small-4 large-4 columns" id="neutral" >
           <br>
-          <h1>Keep calm and carry on.</h1>h1>
+          <h1>Keep calm and carry on.</h1>
           <br>
           <div class="friends">
               
@@ -364,7 +364,7 @@ function get_data($url) {
     
     <div class="small-6 large-4 columns" id="positive" >
             <br>
-            <h1>Have a great day like them!</h1>h1>
+            <h1>Join in the fun!</h1>
             <br>
             <div class="friends">
       
