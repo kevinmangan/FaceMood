@@ -54,18 +54,9 @@ if ($user_id) {
     }
   }
 
-  // This fetches some things that you like . 'limit=*" only returns * values.
-  // To see the format of the data you are retrieving, use the "Graph API
-  // Explorer" which is at https://developers.facebook.com/tools/explorer/
-  $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
+  
 
-  // This fetches 4 of your friends.
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
-
-  // And this returns 16 of your photos.
-  $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
-
-  $home = idx($facebook->api('/me/home?limit=25'), 'data', array());
+  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -119,7 +110,7 @@ function get_data($url) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
 
-    <title><?php echo he($app_name); ?></title>
+    <title>faceMood</title>
     <!--<link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
     -->
@@ -135,7 +126,7 @@ function get_data($url) {
     <!-- over facebook.  You should fill these tags in with      -->
     <!-- your data.  To learn more about Open Graph, visit       -->
     <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
-    <meta property="og:title" content="<?php echo he($app_name); ?>" />
+    <meta property="og:title" content="faceMood" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo AppInfo::getUrl(); ?>" />
     <meta property="og:image" content="<?php echo AppInfo::getUrl('/logo.png'); ?>" />
@@ -250,13 +241,13 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          div.frontpage {
+          .frontpage {
             text-align: center;
           }
           </style>
           <div class="frontpage">
             <h1>Welcome</h1>
-            <img src="logo.jpg" alt="FaceMood"><br/>
+            <img src="logo.png" alt="FaceMood"><br/>
             <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
           </div>
         </div>
@@ -328,25 +319,25 @@ function get_data($url) {
   <div id="container3">
   <div id="container2">		
   <div class="container" id="container1">  
-    <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
+    <div class="small-2 large-4 columns" id="negative" >
         
           <ul class="friends">
-            <li>data data data data </li>
+           
           </ul>
          
     </div>
     
-    <div class="small-4 large-4 columns" id="neutral" style="background-color:#E0D91B">
+    <div class="small-4 large-4 columns" id="neutral" >
 
           <ul class="friends">
-              <li>data data data data </li>
+              
             </ul>
     </div>
     
-    <div class="small-6 large-4 columns" id="positive" style="background-color:#32E01B">
+    <div class="small-6 large-4 columns" id="positive" >
 
             <ul class="friends">
-            <li>data data data data </li>
+      
             </ul>
 
     </div>
