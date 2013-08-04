@@ -269,12 +269,10 @@ function get_data($url) {
     }
   </script>
 
-
   <!-- Logic for Sentiment Analysis and jQuery Sorting -->
   <?php
 
     foreach ($home as $status) {
-
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
                 $from = idx($status, 'from');
@@ -356,6 +354,7 @@ function get_data($url) {
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div> 
+    
 
 
   
