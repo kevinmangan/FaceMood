@@ -258,8 +258,9 @@ $app_name = idx($app_info, 'name', '');
     </header>
 
 
+
     <!-- Three-up Content Blocks -->
-<!--   <<?php
+  <<?php
       if ($user_id) {
     ?>
 
@@ -273,95 +274,7 @@ $app_name = idx($app_info, 'name', '');
   </script>
 
   <div class="container">
-    <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
-
-    <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
-        
-          <ul class="friends">
-            <?php
-              foreach ($friends as $friend) {
-                // Extract the pieces of info we need from the requests above
-                $id = idx($friend, 'id');
-                $name = idx($friend, 'name');
-            ?>
-            <li>
-              <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-                <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-                <?php echo he($name); ?>
-              </a>
-            </li>
-            <?php
-              }
-            ?>
-          </ul>
-         
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-4 large-4 columns" style="background-color:#E0D91B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="small-6 large-4 columns" style="background-color:#32E01B">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
-    
-
-
-  
-
-  <script>
-  document.write('<script src=js/vendor/' +
-  ('__proto__' in {} ? 'zepto' : 'jquery') +
-  '.js><\/script>')
-  </script>
-
-
-  <script src="js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-  
-
-  <?php }?> -->
-
-  <!-- End Footer -->
-
-
-
-    
-
-    <!-- ORIGINAL FACEBOOK SPLASH PAGE -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
-   <<?php
-      if ($user_id) {
-    ?>
-
-  <script>
-    function fbLogout() {
-        FB.logout(function (response) {
-            //Do what ever you want here when logged out like reloading the page
-            window.location.reload();
-        });
-    }
-  </script>
-
-  <div class="container">
-    <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Logout</span></a></span>
+    <span id="fbLogout" onclick="fbLogout()"><a class="small button"><span class="fb_button_text">Logout</span></a></span></br>
 
     <div class="small-2 large-4 columns" style="background-color:#E01B1B;">
         
@@ -420,7 +333,20 @@ $app_name = idx($app_info, 'name', '');
   <!-- End Footer -->
 
   <?php }?>
-  ORIGINAL FACEBOOK SPLASH PAGE
+
+
+
+    
+
+    <!-- ORIGINAL FACEBOOK SPLASH PAGE -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ORIGINAL FACEBOOK SPLASH PAGE
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -553,7 +479,7 @@ $app_name = idx($app_info, 'name', '');
           <p>Let users find and connect to their friends in mobile apps and games.</p>
         </li>
       </ul>
-    </section>
+    </section> -->
    
 
   </body>
