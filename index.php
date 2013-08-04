@@ -143,7 +143,9 @@ function get_data($url) {
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/normalize.css">
     
-
+    <style>
+      div .splash { background-color: #0069D6; }
+    </style>
 
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
