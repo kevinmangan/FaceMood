@@ -242,7 +242,19 @@ function get_data($url) {
      </div>
       
       <?php } else { ?>
-      <header class="clearfix">
+
+      <div> 
+      <nav class="top-bar">
+        <ul class="title-area">
+           <!-- Title Area -->
+           <li class="name">
+             <img src="logo.png" alt="FaceMood" height="25%" width="25%">
+           </li>
+        </ul>
+      </nav>
+     </div>
+      <div>
+      <header id="welcome">
         <div>
           <style>
           div.frontpage {
@@ -254,6 +266,7 @@ function get_data($url) {
           <div style="margin: 0 auto;" class="fb-login-button" data-scope="user_likes,user_photos,read_stream,publish_stream"></div>
         </div>
       </header>
+      <div>
       <?php } ?>
       
 
@@ -331,7 +344,9 @@ function get_data($url) {
   <div id="container2">   
   <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" >
-        
+          <br>
+          <h1>Cheer them up!</h1>h1>
+          <br>
           <div class="friends">
            
           </div>
@@ -339,14 +354,18 @@ function get_data($url) {
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" >
-          
+          <br>
+          <h1>Keep calm and carry on.</h1>h1>
+          <br>
           <div class="friends">
               
             </div>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" >
-          
+            <br>
+            <h1>Have a great day like them!</h1>h1>
+            <br>
             <div class="friends">
       
             </div>
@@ -363,7 +382,7 @@ function get_data($url) {
 		$message = idx($status, 'message');
 		if(idx($status, 'to') == null) { //filter out posts to others walls
 			if(strlen($message) > 6) {        //filter out short messages
-				if((!stristr($message, "happy birthday")) || (!stristr($message, "happy b-day")) || (!stristr($message, "happy birth day")) || (!stristr($message, "feliz cumpleanos"))){ //filter out birthdays
+				if((!stristr(he($message), "happy birthday")) || (!stristr(he($message), "happy b-day")) || (!stristr(he($message), "happy birth day")) || (!stristr(he($message), "feliz cumpleanos"))){ //filter out birthdays
 					  $from = idx($status, 'from');
 					  if(idx($from, 'category') == null) { //filter out Facebook Pages
 						$id = idx($from, 'id');
