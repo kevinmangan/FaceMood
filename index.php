@@ -119,7 +119,7 @@ function get_data($url) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
 
-    <title><?php echo he($app_name); ?></title>
+    <title>faceMood</title>
     <!--<link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
     -->
@@ -135,7 +135,7 @@ function get_data($url) {
     <!-- over facebook.  You should fill these tags in with      -->
     <!-- your data.  To learn more about Open Graph, visit       -->
     <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
-    <meta property="og:title" content="<?php echo he($app_name); ?>" />
+    <meta property="og:title" content="faceMood" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo AppInfo::getUrl(); ?>" />
     <meta property="og:image" content="<?php echo AppInfo::getUrl('/logo.png'); ?>" />
@@ -256,7 +256,7 @@ function get_data($url) {
           }
           </style>
           <h1>Welcome</h1>
-          <img id="frontpage" src="logo.jpg" alt="FaceMood">
+          <img id="frontpage" src="logo.png" alt="FaceMood">
           <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
         </div>
       </header>
@@ -327,25 +327,25 @@ function get_data($url) {
   <div id="container3">
   <div id="container2">		
   <div class="container" id="container1">  
-    <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
+    <div class="small-2 large-4 columns" id="negative" >
         
           <ul class="friends">
-            <li>data data data data </li>
+           
           </ul>
          
     </div>
     
-    <div class="small-4 large-4 columns" id="neutral" style="background-color:#E0D91B">
+    <div class="small-4 large-4 columns" id="neutral" >
 
           <ul class="friends">
-              <li>data data data data </li>
+              
             </ul>
     </div>
     
-    <div class="small-6 large-4 columns" id="positive" style="background-color:#32E01B">
+    <div class="small-6 large-4 columns" id="positive" >
 
             <ul class="friends">
-            <li>data data data data </li>
+      
             </ul>
 
     </div>
