@@ -251,6 +251,7 @@ function get_data($url) {
         <div>
           <style>
           div.frontpage {
+            display: block;
             margin-left: auto;
             margin-right: auto;
           }
