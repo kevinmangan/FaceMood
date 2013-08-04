@@ -250,14 +250,16 @@ function get_data($url) {
       <header class="clearfix">
         <div>
           <style>
-          #frontpage {
+          div.frontpage {
             margin-left: auto;
             margin-right: auto;
           }
           </style>
-          <h1>Welcome</h1>
-          <img id="frontpage" src="logo.jpg" alt="FaceMood">
-          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          <div class="frontpage">
+            <h1>Welcome</h1>
+            <img src="logo.jpg" alt="FaceMood">
+            <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          </div>
         </div>
       </header>
       <?php } ?>
