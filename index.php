@@ -115,6 +115,7 @@ function assignFriend($status){
 
 function comment($id, $comment){
     $facebook->api('/' . $id . '/comments/', 'post', array('message' => $comment));
+    return;
 }
 
 /* gets the data from a URL */
