@@ -244,8 +244,8 @@ function get_data($url) {
      </div>
       
       <?php } else { ?>
-
-      <div style="background-color:#391256;"> 
+      <div style="background-color:#391256;">
+      <div> 
       <nav class="top-bar">
         <ul class="title-area">
            <!-- Title Area -->
@@ -264,6 +264,7 @@ function get_data($url) {
         </div>
       </header>
       <div>
+      </div>
       <?php } ?>
       
 
