@@ -303,8 +303,15 @@ function get_data($url) {
       <?php } else { ?>
       <header class="clearfix">
         <div>
+          <style>
+          #frontpage {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          </style>
           <h1>Welcome</h1>
-          <div class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
+          <img id="frontpage" src="logo.jpg" alt="FaceMood">
+          <div id="frontpage" class="fb-login-button" data-scope="user_likes,user_photos,read_stream"></div>
         </div>
       </header>
       <?php } ?>
@@ -386,13 +393,13 @@ function get_data($url) {
   <!-- End Footer -->
 
 
-<!--
 
- Original Facebook Logout Button
- <span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium" onclick="fbLogout()"><span class="fb_button_text">Logout</span></a></span>
+
+<!--  Original Facebook Logout Button--> 
+<span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium" onclick="fbLogout()"><span class="fb_button_text">Logout</span></a></span>
 
   <?php }?>
-  ORIGINAL FACEBOOK SPLASH PAGE
+  <!-- ORIGINAL FACEBOOK SPLASH PAGE -->
 
     <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
@@ -526,7 +533,7 @@ function get_data($url) {
         </li>
       </ul>
     </section>
- -->  
+   
 
   </body>
 </html>
