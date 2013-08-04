@@ -285,56 +285,101 @@ function get_data($url) {
                 $from = idx($status, 'from');
                 $id = idx($from, 'id');
                 $name = idx($from, 'name');
-
-                if(assignFriends($message) == "positive"){  ?>
+				
+                if(assignFriends($message) == "positive" ){  ?>
                     <script>
                         $('#positive .friends').append(
-                                      <li>
-                                        <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-                                          <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-                                          <?php echo he($name); ?>
-                                          <?php echo he($message); ?>
-                                        </a>
-                                      </li>
+                                      '<li>' + 
+                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
+                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
+                                          '<?php echo he($name); ?>' +
+                                          '<?php echo he($message); ?> ' +
+                                        '</a>' +
+                                      '</li>'
                         );
                     </script>
                <?php } elseif(assignFriends($message) == "neutral"){ ?>
                     <script>
                         $('#neutral .friends').append(
-                                      <li>
-                                        <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-                                          <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-                                          <?php echo he($name); ?>
-                                          <?php echo he($message); ?>
-                                        </a>
-                                      </li>
+                                      '<li>' + 
+                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
+                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
+                                          '<?php echo he($name); ?>' +
+                                          '<?php echo he($message); ?> ' +
+                                        '</a>' +
+                                      '</li>'
                         );
                     </script>
                 <?php } elseif(assignFriends($message) == "negative"){ ?>
                     <script>
-                        $('#neutral .friends').append(
-                                      <li>
-                                        <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-                                          <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-                                          <?php echo he($name); ?>
-                                          <?php echo he($message); ?>
-                                        </a>
-                                      </li>
+                        $('#negative .friends').append(
+                                      '<li>' + 
+                                        '<a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">' +
+                                          '<img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">' +
+                                          '<?php echo he($name); ?>' +
+                                          '<?php echo he($message); ?> ' +
+                                        '</a>' +
+                                      '</li>'
                         );
                     </script>
                 <?php } ?>
 
-  <div class="container">  
+	 <style type="text/css">
+	 
+/* Start of Column CSS */
+#container3 {
+	clear:left;
+	float:left;
+	width:100%;
+	overflow:hidden;
+	background:#89ffa2; /* column 3 background colour */
+}
+#container2 {
+	clear:left;
+	float:left;
+	width:100%;
+	position:relative;
+	right:33.333%;
+	background:#fff689; /* column 2 background colour */
+}
+#container1 {
+	float:left;
+	width:100%;
+	position:relative;
+	right:33.33%;
+	background:#ffa7a7; /* column 1 background colour */
+}
+#negative {
+	float:left;
+	width:29.33%;
+	position:relative;
+	left:68.67%;
+	overflow:hidden;
+}
+#neutral {
+	float:left;
+	width:29.33%;
+	position:relative;
+	left:72.67%;
+	overflow:hidden;
+}
+#positive {
+	float:left;
+	width:29.33%;
+	position:relative;
+	left:76.67%;
+	overflow:hidden;
+}
+</style>				
+  <div id="container3">
+  <div id="container2">		
+  <div class="container" id="container1">  
     <div class="small-2 large-4 columns" id="negative" style="background-color:#E01B1B;">
         
           <ul class="friends">
             
           </ul>
          
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     
     <div class="small-4 large-4 columns" id="neutral" style="background-color:#E0D91B">
@@ -342,11 +387,6 @@ function get_data($url) {
           <ul class="friends">
               
             </ul>
-
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     
     <div class="small-6 large-4 columns" id="positive" style="background-color:#32E01B">
@@ -355,12 +395,8 @@ function get_data($url) {
             
             </ul>
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-  </div> 
+  </div> </div></div>
     
 
 
