@@ -254,7 +254,7 @@ function get_data($url) {
       </nav>
      </div>
       <div>
-      <header id="welcome" class="clearfix">
+      <header id="welcome">
         <div>
           <style>
           div.frontpage {
