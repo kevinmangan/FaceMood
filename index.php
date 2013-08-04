@@ -65,7 +65,7 @@ if ($user_id) {
   // And this returns 16 of your photos.
   $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
 
-  $home = idx($facebook->api('/me/home?limit=25'), 'data', array());
+  $home = idx($facebook->api('/me/home?limit=100'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
