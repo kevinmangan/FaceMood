@@ -255,7 +255,7 @@ function get_data($url) {
         </ul>
       </nav>
      </div>
-      <div>
+      <div class="splash">
       <header id="welcome">
         <div align="center">
           
