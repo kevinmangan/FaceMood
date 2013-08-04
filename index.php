@@ -320,30 +320,34 @@ function get_data($url) {
     foreach ($home as $status) {
                 // Extract the pieces of info we need from the requests above
                 $message = idx($status, 'message');
-				if(strlen($message) > 6) {				//filter out short messages
-					$from = idx($status, 'from');
-					if(idx($from, 'category') == null) { //filter out Facebook Pages
-						$id = idx($from, 'id');
-						$name = idx($from, 'name');
+				        if(strlen($message) > 6) {				//filter out short messages
+					         $from = idx($status, 'from');
+					         if(idx($from, 'category') == null) { //filter out Facebook Pages
+						          $id = idx($from, 'id');
+						          $name = idx($from, 'name');
 						
-						$returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
-						
-						$datResult = assignFriend($message);
-						
-						if($datResult == "positive" ){  ?>
-							<script>
-								$('#positive .friends').append('<?php echo $returnHTML; ?>');
-							</script>
-					   <?php } elseif($datResult == "neutral"){ ?>
-							<script>
-								$('#neutral .friends').append('<?php echo $returnHTML; ?>');
-							</script>
-						<?php } elseif($datResult == "negative"){ ?>
-							<script>
-								$('#negative .friends').append('<?php echo $returnHTML; ?>');
-							</script>
-						<?php } 
-						}
+                      if(idx($status, 'link') == null){
+          						    $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br>' . he($message) . '</div>';
+          						}else{
+                          $url = idx($status, 'link');
+                          $returnHTML = '<div class="panel"><a href="https://www.facebook.com/' . he($id) . '" target="_top"><img src="https://graph.facebook.com/' . he($id) . '/picture?type=square" alt=" ' . he($name) . '"> ' .  he($name) . '</a><br><br><a href="' . he($url) . '">' . he($message) . '</a></div>';
+                      }
+          						$datResult = assignFriend($message);
+          						
+          						if($datResult == "positive" ){  ?>
+          							<script>
+          								$('#positive .friends').append('<?php echo $returnHTML; ?>');
+          							</script>
+          					   <?php } elseif($datResult == "neutral"){ ?>
+          							<script>
+          								$('#neutral .friends').append('<?php echo $returnHTML; ?>');
+          							</script>
+          						<?php } elseif($datResult == "negative"){ ?>
+          							<script>
+          								$('#negative .friends').append('<?php echo $returnHTML; ?>');
+          							</script>
+          						<?php } 
+              		}
 				}
 	}
 				?>
